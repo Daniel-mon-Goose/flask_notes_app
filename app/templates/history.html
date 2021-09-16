@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+<h1>History for note "{{current_note.title}}"</h1>
+<p>Click a record to see more</p>
+<div class="list-group history-list">
+    {% for prev_note in previous_notes %}
+    <a
+            href="{{ url_for('previous_note', previous_id=prev_note.id) }}"
+            class="list-group-item list-group-item-action"
+    >
+        {{ moment(prev_note.created_on).format('MMMM Do YYYY, h:mm:ss a') }}
+    </a>
+    {% endfor %}
+</div>
+
+<a href="{{ url_for('index') }}">Back</a>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% import 'bootstrap/form.html' as wtf %}
+
+<form action="" method="post">
+    {{ form.hidden_tag() }}
+    <p>
+        {{ wtf.render_field(form.title) }}
+        {% for error in form.title.errors %}
+        <div class="alert alert-danger" role="alert">{{ error }}</div>
+        {% endfor %}
+    </p>
+    <p>
+        {{ wtf.render_field(form.text) }}
+        {% for error in form.text.errors %}
+        <div class="alert alert-danger" role="alert">{{ error }}</div>
+        {% endfor %}
+    </p>
+    <p>
+        {{ wtf.render_field(form.submit) }}
+        {% for error in form.submit.errors %}
+        <div class="alert alert-danger" role="alert">{{ error }}</div>
+        {% endfor %}
+    </p>
+</form>
+
+<a href="{{ url_for('index') }}">Back</a>

@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+    {% if notes %}
+        <table class="table table-striped table-bordered">
+            <tr>
+                <th>Note title</th>
+                <th colspan="4" style="text-align: center">Actions</th>
+            </tr>
+        {% for current_note in notes %}
+            <tr>
+                <td>
+                    {{ current_note.title }}
+                </td>
+                <td>
+                    <a href="{{ url_for('note', note_id=current_note.id) }}">
+                        Show
+                    </a>
+                </td>
+                <td>
+                    <a href="{{ url_for('history', note_id=current_note.id) }}">
+                        History
+                    </a>
+                </td>
+                <td>
+                    <a href="{{ url_for('edit', note_id=current_note.id) }}">
+                        Edit
+                    </a>
+                </td>
+                <td>
+                    <a href="{{ url_for('delete', note_id=current_note.id) }}">
+                        Delete
+                    </a>
+                </td>
+
+            </tr>
+        {% endfor %}
+        </table>
+    {% else %}
+        <p>No notes at the moment</p>
+    {% endif %}
+{% endblock %}

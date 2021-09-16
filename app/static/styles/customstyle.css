@@ -1,0 +1,4 @@
+.history-list {
+    overflow-y: scroll;
+    max-height: 350px;
+}

@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% import 'bootstrap/form.html' as wtf %}
+
+{% block app_content %}
+    <h2>Deleting note "{{current_note.title}}"</h2>
+
+    <p>Are you sure you want to proceed?</p>
+
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+        <p>{{ wtf.render_field(form.delete) }} {{ wtf.render_field(form.cancel) }}</p>
+    </form>
+{% endblock %}

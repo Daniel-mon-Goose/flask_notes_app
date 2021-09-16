@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+    <div class="card">
+        <div class="card-header">
+            {{ previous_note.title }}
+        </div>
+        <div class="card-body">
+            <p class="card-text" style="white-space: pre-wrap">{{ previous_note.text }}</p>
+            <footer class="blockquote-footer">
+                Created: {{ moment(previous_note.created_on).format('MMMM Do YYYY, h:mm:ss a') }}
+            </footer>
+        </div>
+    </div>
+
+    <a href="{{ url_for('history', note_id=previous_note.original_note.id) }}">Back</a>
+{% endblock %}

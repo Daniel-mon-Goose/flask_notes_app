@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+    <div class="card">
+        <div class="card-header">
+            {{ note.title }}
+        </div>
+        <div class="card-body">
+            <p class="card-text" style="white-space: pre-wrap">{{ note.text }}</p>
+            <footer class="blockquote-footer">
+                Created: {{ moment(note.created_on).format('MMMM Do YYYY, h:mm:ss a') }}
+            </footer>
+            <footer class="blockquote-footer">
+                Last edited: {{ moment(note.last_edited_on).format('MMMM Do YYYY, h:mm:ss a') }}
+            </footer>
+        </div>
+    </div>
+
+    <a href="{{ url_for('index') }}">Back</a>
+{% endblock %}

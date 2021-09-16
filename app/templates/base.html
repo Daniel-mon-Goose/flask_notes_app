@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        {% block head %}
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        {% block styles %}
+            <link rel="stylesheet"
+                  href="{{ url_for('.static', filename='styles/customstyle.css' )}}">
+
+            <!-- Bootstrap CSS -->
+            {{ bootstrap.load_css() }}
+        {% endblock %}
+
+        <title>
+            {% if title %}{{ title }} - Notes App{% else %}Welcome to Notes App{% endif %}
+        </title>
+
+        {% endblock %}
+    </head>
+    <body>
+
+        {% block scripts %}
+            {{ moment.include_moment() }}
+            <!-- Optional JavaScript -->
+            {{ bootstrap.load_js() }}
+        {% endblock %}
+
+
+        <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+            <a class="navbar-brand" href="#">
+                <img src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg"
+                     width="30" height="30" class="d-inline-block align-top" alt="">
+                Notes App
+            </a>
+
+                <ul class="nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('index') }}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('add') }}">Add new note</a>
+                    </li>
+                </ul>
+
+        </nav>
+
+
+        {% block content %}
+        <div class="container">
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                <div class="alert alert-info" role="alert">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+            {% endwith %}
+
+        {% block app_content %}{% endblock %}
+        </div>
+        {% endblock %}
+    </body>
+</html>
