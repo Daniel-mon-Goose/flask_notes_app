@@ -3,7 +3,7 @@ from datetime import datetime
 
 
 class Note(db.Model):
-    MAX_TEXT_LENGTH = 280
+    MAX_TEXT_LENGTH = 1024
     MAX_TITLE_LENGTH = 120
 
     id = db.Column(db.Integer, primary_key=True)
@@ -18,7 +18,7 @@ class Note(db.Model):
 
 
 class PreviousNote(db.Model):
-    MAX_TEXT_LENGTH = 280
+    MAX_TEXT_LENGTH = 1024
     MAX_TITLE_LENGTH = 120
 
     id = db.Column(db.Integer, primary_key=True)

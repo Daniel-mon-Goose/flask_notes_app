@@ -9,7 +9,7 @@
         {% endfor %}
     </p>
     <p>
-        {{ wtf.render_field(form.text) }}
+        {{ wtf.render_field(form.text, сols=50, rows=4) }}
         {% for error in form.text.errors %}
         <div class="alert alert-danger" role="alert">{{ error }}</div>
         {% endfor %}
